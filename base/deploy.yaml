@@ -1,9 +1,9 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: kargo-demo
 spec:
-  replicas: 1
+  replicas: 4
   selector:
     matchLabels:
       app: kargo-demo
@@ -13,7 +13,7 @@ spec:
         app: kargo-demo
     spec:
       containers:
-      - name: nginx 
+      - name: nginx
         image: public.ecr.aws/nginx/nginx:1.26.0
         volumeMounts:
         - name: content
@@ -23,3 +23,9 @@ spec:
       - name: content
         configMap:
           name: kargo-demo-content
+  strategy:
+    canary:
+      steps:
+        - setWeight: 50
+        - pause: {duration: 5m}
+        - setWeight: 100
