@@ -3,7 +3,7 @@ kind: Rollout
 metadata:
   name: kargo-demo
 spec:
-  replicas: 4
+  replicas: 6
   selector:
     matchLabels:
       app: kargo-demo
@@ -20,7 +20,7 @@ spec:
         app: kargo-demo
     spec:
       containers:
-      - image: public.ecr.aws/nginx/nginx:1.28.0
+      - image: public.ecr.aws/nginx/nginx:1.23.3
         name: nginx
         volumeMounts:
         - mountPath: /usr/share/nginx/html
