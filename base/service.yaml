@@ -3,25 +3,25 @@ kind: Service
 metadata:
   name: kargo-demo-active
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: kargo-demo
   ports:
   - protocol: TCP
     port: 3000
     targetPort: 80
-    nodePort: placeholder
+    
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: kargo-demo-preview
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: kargo-demo
   ports:
   - protocol: TCP
     port: 3000
     targetPort: 80
-    nodePort: placeholder
+    
