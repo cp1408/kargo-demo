@@ -11,7 +11,7 @@ spec:
     blueGreen:
       activeService: kargo-demo-active
       autoPromotionEnabled: false
-      autoPromotionSeconds: 60
+      #autoPromotionSeconds: 60
       previewService: kargo-demo-preview
   template:
     metadata:
