@@ -8,19 +8,17 @@ spec:
     matchLabels:
       app: kargo-demo
   strategy:
-    canary:
-      steps:
-      - setWeight: 50
-      - pause:
-          duration: 5m
-      - setWeight: 100
+    blueGreen:
+      activeService: kargo-demo-active
+      autoPromotionEnabled: false
+      previewService: kargo-demo-preview
   template:
     metadata:
       labels:
         app: kargo-demo
     spec:
       containers:
-      - image: public.ecr.aws/nginx/nginx:1.27.3
+      - image: public.ecr.aws/nginx/nginx:1.27.4
         name: nginx
         volumeMounts:
         - mountPath: /usr/share/nginx/html
