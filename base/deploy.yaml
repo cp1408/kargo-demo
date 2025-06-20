@@ -34,5 +34,5 @@ spec:
       activeService: kargo-demo-active
       previewService: kargo-demo-preview
       autoPromotionEnabled: false
-      autoPromotionSeconds: 60
+      #autoPromotionSeconds: 60
 
